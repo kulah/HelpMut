@@ -19,7 +19,6 @@ define('CONFIG_CLASS_INCLUDED',1)
     <link href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css" rel="stylesheet" type="text/css" />
     <link href="Content/css/AdminLTE.min.css" rel="stylesheet" type="text/css" />
     <link rel="icon" type="images/ico" href="Content/img/favicon.ico" />
-
     <link href="Content/css/skins/skin-blue.min.css" rel="stylesheet" type="text/css" />
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
@@ -30,32 +29,6 @@ define('CONFIG_CLASS_INCLUDED',1)
     <![endif]-->
 
 <script src="Content/js/jquery-1.3.2.min.js"></script>
-
-<script type="text/javascript">
-
- function ajax_listele(){
-            var xmlhttp;
- 
-            if (window.XMLHttpRequest){
-                xmlhttp=new XMLHttpRequest();
-            }
-            else{
-                xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
-            }
-            xmlhttp.onreadystatechange=function()
-            {
-                if(xmlhttp.readyState==4 && xmlhttp.status==200){
- 
-                    document.getElementById("tablo").innerHTML=xmlhttp.responseText;
- 
-                }
-            }
- 
-            xmlhttp.open("POST","index.php",true);
-            xmlhttp.send();
-        }
-
-</script>
   </head>
   <body class="skin-blue sidebar-mini">
     <div class="wrapper">
@@ -67,11 +40,11 @@ define('CONFIG_CLASS_INCLUDED',1)
           <section class="content-header">
             <h1>
               Yönetim Paneli
-              <small>Denetim Masası</small>
+              <small>Kullanıcı Hesapları</small>
             </h1>
             <ol class="breadcrumb">
-              <li><a href="#"><i class="fa fa-dashboard"></i> Yönetim Paneli</a></li>
-              <li class="active">Denetim Masası</li>
+              <li><a href="index.php"><i class="fa fa-dashboard"></i> Yönetim Paneli</a></li>
+              <li class="active">Kullanıcı Hesapları</li>
             </ol>
           </section>
           <!-- Orta Üst Panel Sadece Üst Bilgi Sonu-->
@@ -79,13 +52,13 @@ define('CONFIG_CLASS_INCLUDED',1)
           <!-- Orta Bolum Başlangıcı -->
           <section class="content">
               <!-- Orta Bolum İçerik Başı -->
-              <?php include_once("sayfalar/newsfeed.php"); ?>  		  
+              <?php include_once("sayfalar/usermanager.php"); ?>  		  
   		        <!-- Orta Bolum İçerik Sonu -->
           </section><!-- Orta Bolum Bitişi -->
         </div>
       <!-- Orta Bolum Üst Panel Sonu -->
       <!-- Orta Alt Bilgi Başlangıcı -->
-            <?php include_once("sayfalar/footer.php"); ?>    
+      <?php include_once("sayfalar/footer.php"); ?>    
       <!-- Orta Alt Bilgi Sonu -->
     <!-- REQUIRED JS SCRIPTS -->
     <script src="Content/plugins/jQuery/jQuery-2.1.4.min.js"></script>

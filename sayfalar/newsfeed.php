@@ -78,27 +78,35 @@ header("location: index.php");
 
 <!-- Gelen Mesaj -->
 <ul class="timeline">
+
+<!-- timeline tarih başı-->
+
 <?php                
-$sqltar = $db->query("SELECT  DATE_FORMAT(A.ETAR,'%M') AS ETAR FROM 
-                      (SELECT n.ID, n.DURUM, n.ICERIK, k.ADSOYAD,n.ETAR, n.EKUL, n.DTAR, n.DKUL  
-                              FROM newsfeed n,kullanici k where k.ID=n.EKUL) A
-                      GROUP BY  DATE_FORMAT(A.ETAR,'%M')");
+$sqltar = $db->query("SELECT DATE_FORMAT(A.ETAR,'%M') AS AY,A.ETAR 
+                      FROM (SELECT N.ID, N.DURUM, N.ICERIK, K.ADSOYAD,N.ETAR, N.EKUL, N.DTAR, N.DKUL 
+                            FROM newsfeed N,kullanici K 
+                            WHERE K.ID=N.EKUL) A 
+                      GROUP BY DATE_FORMAT(A.ETAR,'%M')");
 foreach ($sqltar as $timelinetarsql)
 { ?>
+<!-- /.timeline-tarih başı -->
+
     <li class="time-label">
         <span class="bg-red">
         <?php echo turkcetarih('j F Y',$timelinetarsql['ETAR']);?>
         </span>
     </li>
-<?php $sql = $db->query("SELECT n.ID, n.DURUM, n.ICERIK, k.ADSOYAD,n.ETAR, n.EKUL, n.DTAR, n.DKUL  FROM newsfeed n,kullanici k where k.ID=n.EKUL  AND DATE_FORMAT(N.ETAR,'%M') = '".$timelinetarsql['ETAR']."' order by n.ETAR desc");
+
+<!-- /.timeline-tarih sonu -->
+
+<?php $sql = $db->query("SELECT N.ID, N.DURUM, N.ICERIK, K.ADSOYAD, N.ETAR, N.EKUL, N.DTAR, N.DKUL
+FROM newsfeed N, kullanici K
+WHERE K.ID = N.EKUL
+AND DATE_FORMAT( N.ETAR,  '%M' )= '".$timelinetarsql['AY']."' order by N.ETAR desc");
 foreach ($sql as $newsfeedsql)
 { ?>
 
 <ul class="timeline">
-    <!-- timeline tarih başı-->
-
-    <!-- /.timeline-tarih sonu -->
-
     <!-- timeline item -->
     <li>
         <!-- timeline icon -->
