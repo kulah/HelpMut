@@ -20,6 +20,15 @@ define('CONFIG_CLASS_INCLUDED',1)
     <link href="Content/css/AdminLTE.min.css" rel="stylesheet" type="text/css" />
     <link rel="icon" type="images/ico" href="Content/img/favicon.ico" />
     <link href="Content/css/skins/skin-blue.min.css" rel="stylesheet" type="text/css" />
+    <link href="Content/plugins/datatables/dataTables.bootstrap.css" rel="stylesheet" type="text/css" />
+<link href="Content/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+        <!-- font Awesome -->
+        <link href="Content/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
+        <!-- Ionicons -->
+        <link href="Content/css/ionicons.min.css" rel="stylesheet" type="text/css" />
+        <!-- DATA TABLES -->
+        <link href="Content/plugins/datatables/dataTables.bootstrap.css" rel="stylesheet" type="text/css" />
+        <!-- Theme style -->
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -64,6 +73,32 @@ define('CONFIG_CLASS_INCLUDED',1)
     <script src="Content/plugins/jQuery/jQuery-2.1.4.min.js"></script>
     <script src="Content/js/bootstrap.min.js" type="text/javascript"></script>
     <script src="Content/js/app.min.js" type="text/javascript"></script>
+    <script src="Content/plugins/datatables/jquery.dataTables.min.js" type="text/javascript"></script>
+    <script src="Content/plugins/datatables/dataTables.bootstrap.min.js" type="text/javascript"></script>
+    <script src="Content/plugins/slimScroll/jquery.slimscroll.min.js" type="text/javascript"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.2/jquery.min.js"></script>
+        <!-- Bootstrap -->
+        <script src="Content/js/bootstrap.min.js" type="text/javascript"></script>
+        <!-- DATA TABES SCRIPT -->
+        <script src="Content/plugins/datatables/jquery.dataTables.js" type="text/javascript"></script>
+        <script src="Content/plugins/datatables/dataTables.bootstrap.js" type="text/javascript"></script>
+        <!-- AdminLTE App -->
+        <script src="Content/js/AdminLTE/app.js" type="text/javascript"></script>
+        
+        <!-- page script -->
+        <script type="text/javascript">
+            $(function() {
+                $("#example1").dataTable();
+                $('#example2').dataTable({
+                    "bPaginate": true,
+                    "bLengthChange": false,
+                    "bFilter": false,
+                    "bSort": true,
+                    "bInfo": true,
+                    "bAutoWidth": false
+                });
+            });
+        </script>
 
   </body>
 </html>
