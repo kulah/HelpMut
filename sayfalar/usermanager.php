@@ -149,8 +149,8 @@ switch (filter_input(INPUT_GET,"do",FILTER_SANITIZE_SPECIAL_CHARS))
                 <div class="box-header">
                   <h3 class="box-title">Kullanıcı Hesap Yönetimi</h3>
                 </div><!-- /.box-header -->
-                <div class="box-body responsive">
-                  <table id="example1" class="table table-bordered table-striped">
+                <div class="box-body table-responsive">
+                  <table id="example1" class="table table-bordered  table-striped">
                   	<thead>
                       <tr>
                         <th>ID</th>
@@ -161,7 +161,8 @@ switch (filter_input(INPUT_GET,"do",FILTER_SANITIZE_SPECIAL_CHARS))
 						<th>Düzenle</th>
 						<th>Aktif/Pasif</th>
                       </tr>
-                    </thead>   <tbody>
+                    </thead>   
+                    	<tbody>
 
 <?php if($sql != null)
 { ?>
