@@ -150,12 +150,7 @@ switch (filter_input(INPUT_GET,"do",FILTER_SANITIZE_SPECIAL_CHARS))
                   <h3 class="box-title">Kullanıcı Hesap Yönetimi</h3>
                 </div><!-- /.box-header -->
                 <div class="box-body responsive">
-                  
-<?php if($sql != null)
-
-
-{ ?>
-<table id="example1" class="table table-bordered table-striped">
+                  <table id="example1" class="table table-bordered table-striped">
                   	<thead>
                       <tr>
                         <th>ID</th>
@@ -166,12 +161,15 @@ switch (filter_input(INPUT_GET,"do",FILTER_SANITIZE_SPECIAL_CHARS))
 						<th>Düzenle</th>
 						<th>Aktif/Pasif</th>
                       </tr>
-                    </thead>   
+                    </thead>   <tbody>
+
+<?php if($sql != null)
+{ ?>
+
 
 	<?PHP foreach ($sql as $usersql)
 { 
 	$durumrenk = ($usersql['DURUM'] == "+")?"success":"danger";?>
-<tbody>
                       <tr class="<?php echo $durumrenk ?>">
                         <td><?php echo $usersql['ID'] ?></td>
                         <td><?php echo $usersql['DURUM'] ?></td>
