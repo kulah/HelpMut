@@ -50,7 +50,7 @@ switch (filter_input(INPUT_GET,"do",FILTER_SANITIZE_SPECIAL_CHARS))
             dkul = :ddkul,
             dtar = :ddtar
             WHERE ID= :duserid");
-        ###########################################################################################################
+
         $update = $updtQuery->execute(array(
             "dusername" => filter_input(INPUT_POST, "usernameup", FILTER_SANITIZE_SPECIAL_CHARS),
             "dadsoyad" => filter_input(INPUT_POST, "adisoyadiup", FILTER_SANITIZE_SPECIAL_CHARS),
@@ -67,10 +67,10 @@ switch (filter_input(INPUT_GET,"do",FILTER_SANITIZE_SPECIAL_CHARS))
         if(!$update)
         {
             echo 'Kullanıcı bilgileri güncellenemedi!';
-             header("location: kullaniciyonetim.php");    
+             header("location: kullanicihesaplari.php");    
         }else{
             echo 'Kullanıcı bilgileri güncellendi!';
-             header("location: kullaniciyonetim.php");
+             header("location: kullanicihesaplari.php");
 
         }
         break;
@@ -84,11 +84,15 @@ switch (filter_input(INPUT_GET,"do",FILTER_SANITIZE_SPECIAL_CHARS))
        
      date_default_timezone_set('Europe/Istanbul');
         try{
-                            $query = $db->prepare("DELETE FROM kullanici
-                            WHERE ID = ?");
+                            $query = $db->prepare("UPDATE kullanici SET DURUM = ?, dkul = ?,
+                            dtar = ? WHERE ID = ?");
                             $del = $query->execute(array(
-                                $_POST["silid"]
-                            ));
+					                    "-",
+					                    $_SESSION["kullaniciid"],
+					                    date("Y-m-d H:i:s"),
+										filter_input(INPUT_POST, "silid", FILTER_SANITIZE_NUMBER_INT)
+
+                                      ));
         }
         catch (PDOException $ex)
         {
@@ -97,11 +101,11 @@ switch (filter_input(INPUT_GET,"do",FILTER_SANITIZE_SPECIAL_CHARS))
         if(!$del)
         {
             echo 'Kullanıcı silinemedi!'; 
-                header("location: kullaniciyonetim.php");
+                header("location: kullanicihesaplari.php");
 
         }else{
             echo 'Kullanıcı silindi!';
-            header("location: kullaniciyonetim.php");
+            header("location: kullanicihesaplari.php");
 
         }
     break;
@@ -126,10 +130,10 @@ switch (filter_input(INPUT_GET,"do",FILTER_SANITIZE_SPECIAL_CHARS))
         if(!$update)
         {
             echo 'Kullanıcı bilgileri güncellenemedi!'; 
-                header("location: kullaniciyonetim.php");
+                header("location: kullanicihesaplari.php");
         }else{
             echo 'Kullanıcı bilgileri güncellendi!';
-                header("location: kullaniciyonetim.php");
+                header("location: kullanicihesaplari.php");
 
         }
     break;
@@ -145,8 +149,13 @@ switch (filter_input(INPUT_GET,"do",FILTER_SANITIZE_SPECIAL_CHARS))
                 <div class="box-header">
                   <h3 class="box-title">Kullanıcı Hesap Yönetimi</h3>
                 </div><!-- /.box-header -->
-                <div class="box-body">
-                  <table id="example1" class="table table-bordered table-striped">
+                <div class="box-body responsive">
+                  
+<?php if($sql != null)
+
+
+{ ?>
+<table id="example1" class="table table-bordered table-striped">
                   	<thead>
                       <tr>
                         <th>ID</th>
@@ -157,11 +166,12 @@ switch (filter_input(INPUT_GET,"do",FILTER_SANITIZE_SPECIAL_CHARS))
 						<th>Düzenle</th>
 						<th>Aktif/Pasif</th>
                       </tr>
-                    </thead>   <tbody>
-<?php if($sql != null)
-{ foreach ($sql as $usersql)
-{ $durumrenk = ($usersql['DURUM'] == "+")?"success":"danger";?>
+                    </thead>   
 
+	<?PHP foreach ($sql as $usersql)
+{ 
+	$durumrenk = ($usersql['DURUM'] == "+")?"success":"danger";?>
+<tbody>
                       <tr class="<?php echo $durumrenk ?>">
                         <td><?php echo $usersql['ID'] ?></td>
                         <td><?php echo $usersql['DURUM'] ?></td>
@@ -169,18 +179,18 @@ switch (filter_input(INPUT_GET,"do",FILTER_SANITIZE_SPECIAL_CHARS))
                         <td><?php echo $usersql['ADSOYAD'] ?></td>
                         <td><?php echo $usersql['email'] ?></td>
                         <td>
-                        	<form action="kullaniciyonetim.php?do=sil" method="POST">
+                        	<form action="kullanicihesaplari.php?do=duzenle" method="POST">
                     			<button class="btn btn-info btn-sm" name="duzenleid" value="<?php echo $usersql['ID'] ?>">Düzenle</button>
                 			</form>
                 		</td>
 
                 		<td>
                 				<?php if($usersql['DURUM'] == "+"){?>
-							<form action="kullaniciyonetim.php?do=sil" method="POST">
+							<form action="kullanicihesaplari.php?do=sil" method="POST">
                     			<button class="btn btn-danger btn-sm" name="silid" value="<?php echo $usersql['ID'] ?>">Pasif et</button>
                 			</form>
                 			      <?php }else{ ?>
-							<form action="kullaniciyonetim.php?do=sil" method="POST">
+							<form action="kullanicihesaplari.php?do=Aktif" method="POST">
                     			<button class="btn btn-success btn-sm" name="aktifid" value="<?php echo $usersql['ID'] ?>">Aktif et</button>
                 			</form>
                 			      <?php }?>
@@ -198,7 +208,7 @@ switch (filter_input(INPUT_GET,"do",FILTER_SANITIZE_SPECIAL_CHARS))
     $adisoyadiU = $result['ADSOYAD'];
     $emailU = $result['email'];?>
 
-   					<form action="kullaniciyonetim.php?do=duzenKayit" method="POST">
+   					<form action="kullanicihesaplari.php?do=duzenKayit" method="POST">
             <div class="body bg-gray ">
            
         <div class="form-group">
@@ -221,7 +231,7 @@ switch (filter_input(INPUT_GET,"do",FILTER_SANITIZE_SPECIAL_CHARS))
                 <button type="submit" class="btn bg-green pull-left ">Kaydet</button>
             </div>
             <div class="footer">                                                               
-                <a href="kullaniciyonetim.php" class="btn bg-red pull-left">Vazgeç</a>
+                <a href="kullanicihesaplari.php" class="btn bg-red pull-left">Vazgeç</a>
             </div>
         </form>	
 <?php 	}?> 		</tbody>
