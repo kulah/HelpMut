@@ -37,7 +37,7 @@
             <li class="treeview">
               <a href="#"><i class='fa fa-life-ring'></i> <span>Geri Bildirim</span> <i class="fa fa-angle-left pull-right"></i></a>
               <ul class="treeview-menu">
-                <li><a href="#"><i class='fa fa-angle-double-right'></i>Bize Ulaşın</a></li>
+                <li><a href="bizeulasin.php"><i class='fa fa-angle-double-right'></i>Bize Ulaşın</a></li>
                 <li><a href="#"><i class='fa fa-angle-double-right'></i>İletişim Formu</a></li>
               </ul>
             </li>

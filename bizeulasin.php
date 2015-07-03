@@ -79,8 +79,8 @@ define('CONFIG_CLASS_INCLUDED',1)
           <!-- Orta Bolum Başlangıcı -->
           <section class="content">
               <!-- Orta Bolum İçerik Başı -->
-              <?php include_once("sayfalar/usermanager.php"); ?>        
-              <!-- Orta Bolum İçerik Sonu -->
+              <?php include_once("sayfalar/usermanager.php"); ?>  		  
+  		        <!-- Orta Bolum İçerik Sonu -->
           </section><!-- Orta Bolum Bitişi -->
         </div>
       <!-- Orta Bolum Üst Panel Sonu -->
