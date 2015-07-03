@@ -34,6 +34,16 @@
             <li class="header">Yönetim Paneli</li>
             <li class="active"><a href="kullanicihesaplari.php"><i class='fa fa-user'></i> <span>Kullanıcı Hesapları</span></a></li>
             <li><a href="#"><i class='fa fa-home'></i> <span>Haber Yönetimi</span></a></li>
+
+            <li class="treeview">
+              <a href="#"><i class='fa fa-life-ring'></i> <span>Döküman Yönetim</span> <i class="fa fa-angle-left pull-right"></i></a>
+              <ul class="treeview-menu">
+                <li><a href="egitimdokuman.php"><i class='fa fa-angle-double-right'></i>Eğitim Formları</a></li>
+                <li><a href="#"><i class='fa fa-angle-double-right'></i>Yönetmelikler</a></li>
+                <li><a href="#"><i class='fa fa-angle-double-right'></i>Hesaplamalar</a></li>
+                <li><a href="#"><i class='fa fa-angle-double-right'></i>Diğer Formlar</a></li>  
+              </ul>
+            </li>
             <li class="treeview">
               <a href="#"><i class='fa fa-life-ring'></i> <span>Geri Bildirim</span> <i class="fa fa-angle-left pull-right"></i></a>
               <ul class="treeview-menu">
