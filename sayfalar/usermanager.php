@@ -145,55 +145,57 @@ switch (filter_input(INPUT_GET,"do",FILTER_SANITIZE_SPECIAL_CHARS))
 }?>
         <div class="row">
             <div class="col-xs-12">
-              <div class="box">
+             
+ <div class="box">
                 <div class="box-header">
-                  <h3 class="box-title">Kullanıcı Hesap Yönetimi</h3>
+                  <h3 class="box-title">Kullanıcı Listesi</h3>
                 </div><!-- /.box-header -->
                 <div class="box-body table-responsive">
-                  <table id="example1" class="table table-bordered  table-striped">
-                  	<thead>
-                      <tr>
+                  <table id="example1" class="table table-bordered table-striped table-hover ">
+                    <thead>
+                        <tr>
                         <th>ID</th>
                         <th>Durum</th>
                         <th>Kullanıcı Adı</th>
                         <th>Adı Soyadı</th>
                         <th>E-Mail</th>
-						<th>Düzenle</th>
-						<th>Aktif/Pasif</th>
+                        <th>Düzenle</th>
+                        <th>Aktif/Pasif</th>
                       </tr>
-                    </thead>   
-                    	<tbody>
-
+                    </thead>
+                    <tbody>
 <?php if($sql != null)
 { ?>
 
 
-	<?PHP foreach ($sql as $usersql)
+  <?PHP foreach ($sql as $usersql)
 { 
-	$durumrenk = ($usersql['DURUM'] == "+")?"success":"danger";?>
-                      <tr class="<?php echo $durumrenk ?>">
+  $durumrenk = ($usersql['DURUM'] == "+")?"success":"danger";?>
+
+                       <tr class="<?php echo $durumrenk ?>">
                         <td><?php echo $usersql['ID'] ?></td>
                         <td><?php echo $usersql['DURUM'] ?></td>
                         <td><?php echo $usersql['USERNAME'] ?></td>
                         <td><?php echo $usersql['ADSOYAD'] ?></td>
                         <td><?php echo $usersql['email'] ?></td>
                         <td>
-                        	<form action="kullanicihesaplari.php?do=duzenle" method="POST">
-                    			<button class="btn btn-info btn-sm" name="duzenleid" value="<?php echo $usersql['ID'] ?>">Düzenle</button>
-                			</form>
-                		</td>
+                          <form action="kullanicihesaplari.php?do=duzenle" method="POST">
+                           <button class="btn btn-info btn-sm" name="duzenleid" value="<?php echo $usersql['ID'] ?>">Düzenle</button>
+                          </form>
+                        </td>
 
-                		<td>
-                				<?php if($usersql['DURUM'] == "+"){?>
-							<form action="kullanicihesaplari.php?do=sil" method="POST">
-                    			<button class="btn btn-danger btn-sm" name="silid" value="<?php echo $usersql['ID'] ?>">Pasif et</button>
-                			</form>
-                			      <?php }else{ ?>
-							<form action="kullanicihesaplari.php?do=Aktif" method="POST">
-                    			<button class="btn btn-success btn-sm" name="aktifid" value="<?php echo $usersql['ID'] ?>">Aktif et</button>
-                			</form>
-                			      <?php }?>
-                		</td>
+                        <td>
+                            <?php if($usersql['DURUM'] == "+"){?>
+                              <form action="kullanicihesaplari.php?do=sil" method="POST">
+                                <button class="btn btn-danger btn-sm" name="silid" value="<?php echo $usersql['ID'] ?>">Pasif et</button>
+                              </form>
+                                <?php }else{ ?>
+                              <form action="kullanicihesaplari.php?do=Aktif" method="POST">
+                                <button class="btn btn-success btn-sm" name="aktifid" value="<?php echo $usersql['ID'] ?>">Aktif et</button>
+                              </form>
+                                <?php }?>
+                        </td>
+
                       </tr>
 <?php }?>
  

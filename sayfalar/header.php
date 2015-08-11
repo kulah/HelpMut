@@ -117,15 +117,15 @@
                   <!-- The user image in the navbar-->
                   <img src="Content/img/user2-160x160.jpg" class="user-image" alt="User Image"/>
                   <!-- hidden-xs hides the username on small devices so only the image appears. -->
-                  <span class="hidden-xs">Administrator</span>
+                  <span class="hidden-xs"><?php echo  $_SESSION["adsoyad"]; ?></span>
                 </a>
                 <ul class="dropdown-menu">
                   <!-- The user image in the menu -->
                   <li class="user-header">
                     <img src="Content/img/user2-160x160.jpg" class="img-circle" alt="User Image" />
                     <p>
-                      Administrator - Web Developer
-                      <small>Üyelik Tarihi : 01.07.2015</small>
+                      <?php echo  $_SESSION["adsoyad"]; ?> - Web Developer
+                      <small>Üyelik Tarihi : <?php echo  $_SESSION["kayit_tar"]; ?> </small>
                     </p>
                   </li>
                   <!-- Menu Body -->

@@ -93,19 +93,28 @@ define('CONFIG_CLASS_INCLUDED',1)
     <script src="Content/js/app.min.js" type="text/javascript"></script>
         <script src="Content/plugins/datatables/jquery.dataTables.js" type="text/javascript"></script>
         <script src="Content/plugins/datatables/dataTables.bootstrap.js" type="text/javascript"></script>
+
+
+
+    <script src="Content/plugins/datatables/jquery.slimscroll.min.js" type="text/javascript"></script>
+    <!-- FastClick -->
+    <script src="Content/plugins/datatables/fastclick.min.js" type="text/javascript"></script>
+    <!-- AdminLTE App -->
+    <script src="Content/plugins/datatables/app.min.js" type="text/javascript"></script>
+    <!-- AdminLTE for demo purposes -->
 <script type="text/javascript">
-            $(function() {
-                $("#example1").dataTable();
-                $('#example2').dataTable({
-                    "bPaginate": true,
-                    "bLengthChange": false,
-                    "bFilter": false,
-                    "bSort": true,
-                    "bInfo": true,
-                    "bAutoWidth": false
-                });
-            });
-        </script>
+      $(function () {
+        $("#example1").DataTable();
+        $('#example2').DataTable({
+          "paging": true,
+          "lengthChange": false,
+          "searching": false,
+          "ordering": true,
+          "info": true,
+          "autoWidth": false
+        });
+      });
+    </script
 
   </body>
 </html>
